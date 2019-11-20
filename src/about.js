@@ -2,8 +2,9 @@ export { about };
 import _ from 'lodash';
 import './style.css';
 import aboutPicture from './about.jpg';
+import { nav } from './nav.js';
 
-function about(home, menu, about) {
+function about() {
     
     const container = document.querySelector("#content");
     container.innerHTML = "";
@@ -19,31 +20,10 @@ function about(home, menu, about) {
     backgroundImages.src = aboutPicture;
     backgroundImages.classList.add("image");    
     container.appendChild(backgroundImages);
-    textContainer.classList.add("text-container")
-    
+    textContainer.classList.add("text-container")    
 
     // creating the navbar
-    const navMenu = document.createElement('ul');
-    const homePage = document.createElement("li");
-    const menuPage = document.createElement("li");
-    const contactPage = document.createElement("li");
-    homePage.innerHTML = `<a href="#"> HOME</a>`;
-    homePage.onclick = function(){
-        home(home, menu, about);
-    }
-    menuPage.innerHTML = `<a href="#"> MENU</a>`;
-    menuPage.onclick = function(){
-        menu(home, menu, about);
-    }
-    contactPage.innerHTML = `<a href="#"> CONTACT</a>`;
-    contactPage.onclick = function(){
-        about(home, menu, about);
-    }
-    navMenu.classList.add("navbar");
-    navMenu.appendChild(homePage);
-    navMenu.appendChild(menuPage);
-    navMenu.appendChild(contactPage);
-
+    const navbar = nav();
  
     // Creating the title text that goes on the home page
     
@@ -59,7 +39,7 @@ function about(home, menu, about) {
 
     contactInfoContainer.classList.add("information");
     textContainer.appendChild(textHeader);
-    textContainer.appendChild(navMenu);
+    textContainer.appendChild(navbar);
     contactInfoContainer.appendChild(textContactNumberLabel);
     contactInfoContainer.appendChild(textContactNumber);
     contactInfoContainer.appendChild(textAddressLabel);
@@ -67,5 +47,4 @@ function about(home, menu, about) {
     textContainer.appendChild(contactInfoContainer);
     container.appendChild(textContainer);
     
-    return container;
 }

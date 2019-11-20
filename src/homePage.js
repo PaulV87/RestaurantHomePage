@@ -2,8 +2,9 @@ export { home }
 import _ from 'lodash';
 import './style.css';
 import homepage from './homepage.jpg';
+import { nav } from './nav.js';
 
-function home(home, menu, about) {
+function home() {
 
     // create all the divs that will be used on the homepage   
     const container = document.querySelector('#content');
@@ -20,27 +21,8 @@ function home(home, menu, about) {
     container.appendChild(backgroundImages);
     textContainer.classList.add("text-container")
 
-// creating the navbar
-    const navMenu = document.createElement('ul');
-    const homePage = document.createElement("li");
-    const menuPage = document.createElement("li");
-    const contactPage = document.createElement("li");
-    homePage.innerHTML = `<a href="#"> HOME</a>`;
-    homePage.onclick = function(){
-        home(home, menu, about);
-    }
-    menuPage.innerHTML = `<a href="#"> MENU</a>`;
-    menuPage.onclick = function(){
-        menu(home, menu, about);
-    }
-    contactPage.innerHTML = `<a href="#"> CONTACT</a>`;
-    contactPage.onclick = function(){
-        about(home, menu, about);
-    }
-    navMenu.classList.add("navbar");
-    navMenu.appendChild(homePage);
-    navMenu.appendChild(menuPage);
-    navMenu.appendChild(contactPage);
+    //navbar
+    const navbar = nav();
     
     // Creating the title text that goes on the home page
     
@@ -53,10 +35,7 @@ function home(home, menu, about) {
     textReview.classList.add("review-text");
     
     textContainer.appendChild(textHeader);
-    textContainer.appendChild(navMenu);
+    textContainer.appendChild(navbar);
     textContainer.appendChild(textReview);
     container.appendChild(textContainer);
-    
-    
-    return container;
 };
